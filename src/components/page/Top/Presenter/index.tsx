@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import Head from 'next/head';
 import { Heading, Box, Input, Button, VStack, HStack } from '@chakra-ui/react';
 import WeatherCard from '../../../ui/WeatherCard';
+import { formatDate } from '../../../ui/FormatDate';
 import { weather } from '../../../../types/weather';
 
 type Props = {
@@ -26,7 +27,7 @@ const TopPagePresenter = ({ weather }: Props) => (
         </Button>
       </VStack>
       <Heading as='h2' textAlign='center' mb='2'>
-        日付
+        {formatDate(new Date())}
       </Heading>
       <WeatherCard {...weather} />
       <HStack justifyContent='space-between' mt='6'>
