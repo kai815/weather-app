@@ -1,19 +1,18 @@
 import React, { ReactNode } from 'react';
 import Head from 'next/head';
+import { Heading } from '@chakra-ui/react';
 
-type Props = {
-  children?: ReactNode;
-  title?: string;
-};
+//todo後で必要になるデータを定義する
+// type Props = {};
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => (
+const TopPagePresentator = () => (
   <div>
     <Head>
-      <title>{title}</title>
+      <title>お天気アプリ</title>
       <meta charSet='utf-8' />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
     </Head>
-    {children}
+    <Heading color='red'>お天気アプリ</Heading>
     <footer>
       <hr />
       <span>お天気フッター</span>
@@ -21,4 +20,4 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
   </div>
 );
 
-export default Layout;
+export default TopPagePresentator;

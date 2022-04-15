@@ -1,11 +1,5 @@
-import Link from 'next/link';
-import Layout from '../components/Layout';
-import { Heading } from '@chakra-ui/react';
+import TopPageContainer from '../components/page/Top/Container';
 
-const IndexPage = () => (
-  <Layout title='お天気アプリ'>
-    <Heading color='red'>お天気アプリ</Heading>
-  </Layout>
-);
+const IndexPage = () => <TopPageContainer />;
 
 export default IndexPage;
