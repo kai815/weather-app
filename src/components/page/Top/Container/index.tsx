@@ -9,7 +9,7 @@ type WeatherListResponse = {
   data: [
     {
       weather: {
-        icon: number;
+        icon: string;
         code: string;
         description: string;
       };
@@ -32,8 +32,8 @@ const TopPageContainer = () => {
     return <>Loading...</>;
   } else {
     const weather = {
-      max_temp: data.data[0].max_temp!,
-      min_temp: data.data[0].min_temp!,
+      max_temp: data.data[0].max_temp,
+      min_temp: data.data[0].min_temp,
       ...data.data[0].weather!,
     };
     return <TopPagePresenter weather={weather} />;

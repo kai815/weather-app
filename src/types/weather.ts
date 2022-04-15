@@ -1,5 +1,5 @@
 export type weather = {
-  icon: number;
+  icon: string;
   code: string;
   description: string;
   max_temp: number;
