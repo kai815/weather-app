@@ -5,7 +5,7 @@ import { Heading } from '@chakra-ui/react';
 //todo後で必要になるデータを定義する
 // type Props = {};
 
-const TopPagePresentator = () => (
+const TopPagePresenter = () => (
   <div>
     <Head>
       <title>お天気アプリ</title>
@@ -20,4 +20,4 @@ const TopPagePresentator = () => (
   </div>
 );
 
-export default TopPagePresentator;
+export default TopPagePresenter;

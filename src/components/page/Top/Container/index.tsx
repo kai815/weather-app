@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import Head from 'next/head';
 import { Heading } from '@chakra-ui/react';
-import TopPagePresentator from '../Presentator/';
+import TopPagePresenter from '../Presenter';
 
 //todo後で必要になるデータを定義する
 // type Props = {};
 //Containerはデータ取得してPresentatorに渡す
-const TopPageContainer = () => <TopPagePresentator />;
+const TopPageContainer = () => <TopPagePresenter />;
 
 export default TopPageContainer;
