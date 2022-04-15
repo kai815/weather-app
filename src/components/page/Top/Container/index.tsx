@@ -9,7 +9,7 @@ type WeatherListResponse = {
   data: [
     {
       weather: {
-        icon: string;
+        icon: number;
         code: string;
         description: string;
       };
