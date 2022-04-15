@@ -2,11 +2,13 @@ import React, { ReactNode } from 'react';
 import Head from 'next/head';
 import { Heading, Box, Input, Button, VStack, HStack } from '@chakra-ui/react';
 import WeatherCard from '../../../ui/WeatherCard';
+import { weather } from '../../../../types/weather';
 
-//todo後で必要になるデータを定義する
-// type Props = {};
+type Props = {
+  weather: weather;
+};
 
-const TopPagePresenter = () => (
+const TopPagePresenter = ({ weather }: Props) => (
   <div>
     <Head>
       <title>お天気アプリ</title>
@@ -26,7 +28,7 @@ const TopPagePresenter = () => (
       <Heading as='h2' textAlign='center' mb='2'>
         日付
       </Heading>
-      <WeatherCard />
+      <WeatherCard {...weather} />
       <HStack justifyContent='space-between' mt='6'>
         <Button variant='outline' colorScheme='blue'>
           前日
