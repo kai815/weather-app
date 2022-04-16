@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import {
   Input,
   Button,
@@ -8,20 +8,26 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 
+type FormData = {
+  latitude: string;
+  longitude: string;
+};
 const SearchForm = () => {
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm<FormData>();
 
-  const onSubmit = () => {
+  const onSubmit: SubmitHandler<FormData> = (data) => {
     console.log('sbumt');
+    console.log(data.latitude);
+    console.log(data.longitude);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <FormControl isInvalid={errors.latitude || errors.longitude}>
+      <FormControl isInvalid={!!errors.latitude || !!errors.longitude}>
         <VStack spacing={4} marginY={5}>
           <Input
             variant='outline'
@@ -61,7 +67,7 @@ const SearchForm = () => {
           <FormErrorMessage>
             {errors.longitude && errors.longitude.message}
           </FormErrorMessage>
-          <Button colorScheme='orange' ml='auto' type='submit'>
+          <Button colorScheme='orange' isLoading={isSubmitting} type='submit'>
             検索
           </Button>
         </VStack>
