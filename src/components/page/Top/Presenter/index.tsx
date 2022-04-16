@@ -27,6 +27,10 @@ const TopPagePresenter = ({
       <title>お天気アプリ</title>
       <meta charSet='utf-8' />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      <meta
+        httpEquiv='Content-Security-Policy'
+        content='upgrade-insecure-requests'
+      />
     </Head>
     {/* スマホのみのサイズを対応する予定なので、500pxにしてる */}
     <Box maxW='500px' minH='100vh' marginX='auto' boxShadow='base' padding={4}>
