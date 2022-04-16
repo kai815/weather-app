@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TopPagePresenter from '../Presenter';
 import { useFetchWeathers } from './fetchWeathers';
 import { LatLon } from '../../../../types/latLon';
+import Layout from '../../../layouts';
 
 //Containerはデータ取得してPresentatorに渡す
 const TopPageContainer = () => {
@@ -21,9 +22,9 @@ const TopPageContainer = () => {
     setSelectedDateIndex((prevDateIndex) => prevDateIndex - 1);
   };
 
-  if (error) <>エラー</>;
+  if (error) <Layout>エラー</Layout>;
   if (typeof data === 'undefined') {
-    return <>Loading...</>;
+    return <Layout>Loading...</Layout>;
   } else {
     const weather = {
       max_temp: data.data[selectedDateIndex].max_temp,
@@ -32,13 +33,15 @@ const TopPageContainer = () => {
       ...data.data[selectedDateIndex].weather,
     };
     return (
-      <TopPagePresenter
-        weather={weather}
-        changeLatLon={changeLatLon}
-        selectedDateIndex={selectedDateIndex}
-        plusSelectedDateIndex={plusSelectedDateIndex}
-        minusSelectedDateIndex={minusSelectedDateIndex}
-      />
+      <Layout>
+        <TopPagePresenter
+          weather={weather}
+          changeLatLon={changeLatLon}
+          selectedDateIndex={selectedDateIndex}
+          plusSelectedDateIndex={plusSelectedDateIndex}
+          minusSelectedDateIndex={minusSelectedDateIndex}
+        />
+      </Layout>
     );
   }
 };
