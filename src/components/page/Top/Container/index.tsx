@@ -21,7 +21,6 @@ const TopPageContainer = () => {
     setSelectedDateIndex((prevDateIndex) => prevDateIndex - 1);
   };
 
-  console.log('data', data);
   if (error) <>エラー</>;
   if (typeof data === 'undefined') {
     return <>Loading...</>;
