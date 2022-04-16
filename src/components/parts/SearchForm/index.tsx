@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import {
   Input,
   Button,
@@ -7,21 +7,34 @@ import {
   FormControl,
   FormErrorMessage,
 } from '@chakra-ui/react';
+import { LatLon } from '../../../types/latLon';
 
-const SearchForm = () => {
+type FormData = {
+  latitude: string;
+  longitude: string;
+};
+
+type Props = {
+  changeLatLon: (args: LatLon) => void;
+};
+const SearchForm = ({ changeLatLon }: Props) => {
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm<FormData>();
 
-  const onSubmit = () => {
-    console.log('sbumt');
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    const latLon = {
+      latitude: data.latitude,
+      longitude: data.longitude,
+    };
+    changeLatLon(latLon);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <FormControl isInvalid={errors.latitude || errors.longitude}>
+      <FormControl isInvalid={!!errors.latitude || !!errors.longitude}>
         <VStack spacing={4} marginY={5}>
           <Input
             variant='outline'
@@ -61,7 +74,7 @@ const SearchForm = () => {
           <FormErrorMessage>
             {errors.longitude && errors.longitude.message}
           </FormErrorMessage>
-          <Button colorScheme='orange' ml='auto' type='submit'>
+          <Button colorScheme='orange' isLoading={isSubmitting} type='submit'>
             検索
           </Button>
         </VStack>
