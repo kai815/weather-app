@@ -5,12 +5,14 @@ import WeatherCard from '../../../parts/WeatherCard';
 import SearchForm from '../../../parts/SearchForm';
 import { formatDate } from '../../../../utils/FormatDate';
 import { weather } from '../../../../types/weather';
+import { LatLon } from '../../../../types/latLon';
 
 type Props = {
   weather: weather;
+  changeLatLon: (args: LatLon) => void;
 };
 
-const TopPagePresenter = ({ weather }: Props) => (
+const TopPagePresenter = ({ weather, changeLatLon }: Props) => (
   <div>
     <Head>
       <title>お天気アプリ</title>
@@ -20,7 +22,7 @@ const TopPagePresenter = ({ weather }: Props) => (
     {/* スマホのみのサイズを対応する予定なので、500pxにしてる */}
     <Box maxW='500px' minH='100vh' marginX='auto' boxShadow='base' padding={4}>
       <Heading as='h1'>お天気チェック</Heading>
-      <SearchForm />
+      <SearchForm changeLatLon={changeLatLon} />
       <Heading as='h2' textAlign='center' mb='2'>
         {formatDate(new Date())}
       </Heading>

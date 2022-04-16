@@ -7,12 +7,17 @@ import {
   FormControl,
   FormErrorMessage,
 } from '@chakra-ui/react';
+import { LatLon } from '../../../types/latLon';
 
 type FormData = {
   latitude: string;
   longitude: string;
 };
-const SearchForm = () => {
+
+type Props = {
+  changeLatLon: (args: LatLon) => void;
+};
+const SearchForm = ({ changeLatLon }: Props) => {
   const {
     handleSubmit,
     register,
@@ -20,9 +25,11 @@ const SearchForm = () => {
   } = useForm<FormData>();
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log('sbumt');
-    console.log(data.latitude);
-    console.log(data.longitude);
+    const latLon = {
+      latitude: data.latitude,
+      longitude: data.longitude,
+    };
+    changeLatLon(latLon);
   };
 
   return (
