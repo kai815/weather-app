@@ -33,7 +33,7 @@ const TopPagePresenter = ({
       <Heading as='h1'>お天気チェック</Heading>
       <SearchForm changeLatLon={changeLatLon} />
       <Heading as='h2' textAlign='center' mb='2'>
-        {formatDate(new Date())}
+        {formatDate(new Date(weather.datetime))}
       </Heading>
       <WeatherCard {...weather} />
       <HStack justifyContent='space-between' mt='6'>

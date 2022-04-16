@@ -13,6 +13,7 @@ type WeatherListResponse = {
       };
       max_temp: number;
       min_temp: number;
+      datetime: string;
     },
   ];
   city_name: string;

@@ -21,6 +21,7 @@ const TopPageContainer = () => {
     setSelectedDateIndex((prevDateIndex) => prevDateIndex - 1);
   };
 
+  console.log('data', data);
   if (error) <>エラー</>;
   if (typeof data === 'undefined') {
     return <>Loading...</>;
@@ -28,6 +29,7 @@ const TopPageContainer = () => {
     const weather = {
       max_temp: data.data[selectedDateIndex].max_temp,
       min_temp: data.data[selectedDateIndex].min_temp,
+      datetime: data.data[selectedDateIndex].datetime,
       ...data.data[selectedDateIndex].weather,
     };
     return (
